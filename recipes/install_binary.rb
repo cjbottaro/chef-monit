@@ -4,7 +4,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/#{tar_file}" do
   source node["monit"]["binary"]["url"]
   checksum node["monit"]["binary"]["checksum"]
   action :create_if_missing
-  notifies :run, "execute[install-monit-binary]"
+  notifies :run, "execute[install-monit-binary]", :immediately
 end
 
 execute "install-monit-binary" do
